@@ -3,10 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>صفحة عمر</title>
+    <title>صفحة معلومات</title>
     <style>
         body {
             display: flex;
+            flex-direction: column;
             justify-content: center;
             align-items: center;
             height: 100vh;
@@ -19,11 +20,45 @@
         .content {
             text-align: center;
         }
+
+        input {
+            margin: 10px;
+            padding: 10px;
+            font-size: 16px;
+        }
+
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        .info {
+            margin-top: 20px;
+            font-size: 18px;
+        }
     </style>
 </head>
 <body>
     <div class="content">
-        <h1>عمر</h1>
+        <h1>أدخل معلوماتك</h1>
+        <input type="text" id="nameInput" placeholder="أدخل اسمك">
+        <input type="number" id="ageInput" placeholder="أدخل عمرك">
+        <button onclick="displayInfo()">عرض المعلومات</button>
+        <div class="info" id="infoDisplay"></div>
     </div>
+
+    <script>
+        function displayInfo() {
+            const name = document.getElementById('nameInput').value;
+            const age = document.getElementById('ageInput').value;
+            const infoDisplay = document.getElementById('infoDisplay');
+            if (name && age) {
+                infoDisplay.innerHTML = `<p>الاسم: ${name}</p><p>العمر: ${age}</p>`;
+            } else {
+                infoDisplay.innerHTML = '<p>يرجى ملء جميع الحقول.</p>';
+            }
+        }
+    </script>
 </body>
 </html>
